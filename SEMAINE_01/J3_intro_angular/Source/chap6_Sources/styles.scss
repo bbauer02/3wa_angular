@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+.principal{
+    height: 8rem;
+    margin: 0 4.5rem;
+    border-radius: .25rem; 
+    padding : 1rem; 
+}
+
+.content{
+    margin-top : 1rem;
+}
+
+.pastrie {
+    .card, .pagination {
+        margin-top: 0.5rem;
+    }
+    .btn{ display: inline-block;  margin: 0 0.6rem; }
+}
+.glyph-icon {
+   height: .75rem;
+   display: inline-block; margin:0.25rem;
+}

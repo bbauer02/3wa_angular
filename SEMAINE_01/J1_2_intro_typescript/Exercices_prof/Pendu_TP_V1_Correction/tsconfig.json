@@ -1,0 +1,12 @@
+{
+"compilerOptions": {
+    "experimentalDecorators": true, // support expérimental des décorateurs
+    "module": "commonjs", // gérer les import et export
+    "target": "esnext", 
+    "outDir": "build", // dossier des fichiers buildés
+    "rootDir": "src", // dossier des fichiers ts
+    "alwaysStrict" : true,
+    "moduleResolution": "node",
+},
+  "exclude": ["node_modules"] // exclure le dossier node_modules
+}

@@ -1,0 +1,20 @@
+<!--
+Méthode onSubmit à définir dans le TypeScript.
+Vous devez également définir une référence locale #formSearch.
+Ainsi que les directives ngModel pour lier un champ à son nom (data-binding)
+-->
+<form class="form-inline my-2 my-lg-0 d-inline-flex mb-2"
+      (ngSubmit)="onSubmit(formSearch)"
+      #formSearch="ngForm"
+>
+  <!-- NgModel + syntaxe banana in a box -->
+  <input name="word" [(ngModel)]="word" (ngModelChange)="onChangeEmit($event)" />
+  <!-- Directive disabled pour désactiver le formulaire si il n'est pas valide -->
+  <button
+    [disabled]="formSearch.invalid"
+    class="btn btn-outline-success my-2 my-sm-0 m-4"
+    type="submit"
+  >
+    Search
+  </button>
+</form>

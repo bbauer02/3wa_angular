@@ -1,0 +1,12 @@
+<div class="card" *ngIf="pastrie">
+  <img *ngIf="pastrie.url" class="card-img-top" src="{{pastrie.url}}" alt="Pastrie Category">
+  <div class="card-body">
+    <h5 class="card-title">{{ pastrie.ref }}</h5>
+    <p class="card-text">Name: {{ pastrie.name }}</p>
+    <button class="btn btn-primary" (click)="modifyOrder()"> {{sens ? "Desc" : "Asc"}} >> </button>
+  </div>
+  <ul class="list-group" *ngIf="ingredients">
+    <h2>Liste des ingrédients</h2>
+    <li *ngFor="let ingredient of ingredients " class="list-group-item">{{ingredient}}</li>
+  </ul>
+</div>

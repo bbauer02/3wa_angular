@@ -1,0 +1,19 @@
+<div class="card" *ngIf="pastrie">
+  <img *ngIf="pastrie.url" class="card-img-top" src="{{pastrie.url}}" alt="Pastrie Category">
+  <div class="card-body">
+    <h5 class="card-title">{{ pastrie.ref }}</h5>
+    <p class="card-text">Name: {{ pastrie.name }}</p>
+  </div>
+  <ul class="list-group" *ngIf="ingredients">
+    <h2>Liste des ingrédients</h2>
+    <li *ngFor="let ingredient of ingredients " class="list-group-item">{{ingredient}} <i  style="cursor: pointer;" (click)="DeleteRecipe(ingredient)" class="bi bi-trash-fill"></i></li>
+  </ul>
+
+  <label for="label{{pastrie.id}}">Ajouter un ingrédient</label>
+  <input
+    id="label{{pastrie.id}}"
+    (keyup.enter)="AddRecipe($event)"
+  />
+
+
+</div>

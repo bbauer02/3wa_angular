@@ -1,0 +1,17 @@
+<div class="card" *ngIf="pastrie">
+  <img *ngIf="pastrie.url" class="card-img-top" src="{{pastrie.url}}" alt="Pastrie Category">
+  <div class="card-body">
+    <h5 class="card-title">{{ pastrie.ref }}</h5>
+    <p class="card-text">Nom : {{ pastrie.name }}</p>
+    <p>Nombre de pâtisseries que qu'il vous reste à choisir : {{maxPastries}}</p>
+    <button class="btn btn-primary m-2" (click)="modifyIngredientsOrder()"> {{sens ? "Desc" : "Asc"}} >> </button>
+    <button *ngIf="maxPastries > 0" class="btn btn-success m-2" (click)="preference(pastrie.id)"> Choice </button>
+    <button *ngIf="maxPastries == 0" class="btn btn-success m-2 disabled" (click)="preference(pastrie.id)"> Choice </button>
+    <button class="btn btn-danger m-2" (click)="selectionToHide(pastrie.id)"> Hide Pastrie Detail </button> <!-- On définit le bouton pour cacher le détail d'une pâtisserie -->
+    <span class="btn-primary badge bg-info" *ngIf="pastrie.choice == 'Priority' "> Priority </span>
+  </div>
+  <ul class="list-group" *ngIf="ingredients">
+    <h2 class="m-3">Liste des ingrédients</h2>
+    <li *ngFor="let ingredient of ingredients " class="list-group-item">{{ingredient}}</li>
+  </ul>
+</div>

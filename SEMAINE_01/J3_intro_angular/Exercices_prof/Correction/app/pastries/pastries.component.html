@@ -1,0 +1,66 @@
+<div class="row content">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Se connecter
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0 d-inline-flex">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0 m-4" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+  <div class="col-sm-4">
+    <!-- PastrieDetails communication parent vers enfant -->
+    <app-pastrie-details [pastrie]="selectedPastrie"></app-pastrie-details>
+  </div>
+  <!-- -->
+  <div class="col-sm-8 pastrie">
+    <h1>{{ titlePage }}</h1>
+    <!-- Pagination -->
+    <div class="card" *ngFor="let pastrie of pastries">
+      <div class="card-header">
+        {{ pastrie.ref }}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{pastrie.name}}</h5>
+<!--        <button (click)="onSelect(pastrie)" class="btn btn-primary"> Sélectionner </button>-->
+        <p class="card-text">{{pastrie.description}}</p>
+        <!-- condition qui vérifie si il y a des tags présents dans une pâtisserie. Si ce n'est pas le cas,
+             la directive ne crée pas l'élément HTML dans le Component.
+         -->
+        <ul *ngIf="pastrie.tags" class="list-inline">
+          <li class="list-inline-item" *ngFor="let word of pastrie.tags">
+            <span class="btn-primary badge bg-info">{{ word }}</span>
+          </li>
+        </ul>
+        <a class="btn btn-outline-dark" href="#" role="button">fr</a>
+        <!-- permert de gérer un if plus complexe, voir doc Angular -->
+        <ng-template [ngIf]="pastrie.like">
+          <img class="glyph-icon" src="./assets/svg/si-glyph-heart.svg" alt="like"/>
+          <small>{{ pastrie.like }}</small>
+        </ng-template>
+        <ng-template [ngIf]="pastrie.quantity">
+          <img class="glyph-icon" src="./assets/svg/si-glyph-triangle-double-arrow-right.svg" alt="disponibility"/>
+          <small>{{pastrie.quantity}} unités disponibles</small>
+        </ng-template>
+      </div>
+    </div>
+    <!-- .card -->
+    <!-- Pagination -->
+  </div>
+  <!-- .pastrie -->
+</div>

@@ -1,0 +1,49 @@
+<div class="row content m-2">
+  <div class="col-4">
+    <app-search (searchPastries)="search($event)" (partialPastrieSearch)="search($event)"></app-search>
+    <!-- PastrieDetails communication parent vers enfant -->
+    <app-pastrie-details
+      [maxPastries]="maxPastries"
+      [pastrie]="selectedPastrie"
+      (changePreference)="changeParentPreference($event)"
+      (hidePastrie)="hidePastrieDetail($event)"
+    >
+    </app-pastrie-details>
+  </div>
+  <!-- -->
+  <div class="col-sm-8 pastrie">
+    <h1>{{ titlePage }}</h1>
+    <!-- Pagination -->
+    <div class="card" *ngFor="let pastrie of pastries">
+      <div class="card-header">
+        {{ pastrie.ref }}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><a class="text-info" routerLink="/pastrie/{{pastrie.id}}">{{pastrie.name}}</a></h5>
+        <button (click)="onSelect(pastrie)" class="btn btn-primary"> Sélectionner </button>
+        <p class="card-text">{{pastrie.description}}</p>
+        <!-- condition qui vérifie si il y a des tags présents dans une pâtisserie. Si ce n'est pas le cas,
+             la directive ne crée pas l'élément HTML dans le Component.
+         -->
+        <ul *ngIf="pastrie.tags" class="list-inline">
+          <li class="list-inline-item" *ngFor="let word of pastrie.tags">
+            <span class="btn-primary badge bg-warning">{{ word }}</span>
+          </li>
+        </ul>
+        <a class="btn btn-outline-dark" href="#" role="button">fr</a>
+        <!-- permert de gérer un if plus complexe, voir doc Angular -->
+        <ng-template [ngIf]="pastrie.like">
+          <img class="glyph-icon" src="./assets/svg/si-glyph-heart.svg" alt="like"/>
+          <small>{{ pastrie.like }}</small>
+        </ng-template>
+        <ng-template [ngIf]="pastrie.quantity">
+          <img class="glyph-icon" src="./assets/svg/si-glyph-triangle-double-arrow-right.svg" alt="disponibility"/>
+          <small>{{pastrie.quantity}} unités disponibles</small>
+        </ng-template>
+      </div>
+    </div>
+    <!-- .card -->
+    <!-- Pagination -->
+  </div>
+  <!-- .pastrie -->
+</div>

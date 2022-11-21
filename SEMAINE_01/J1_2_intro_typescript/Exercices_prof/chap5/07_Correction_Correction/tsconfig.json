@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+      "outDir": "./dist", // dossier de compilation
+      "rootDir": "./App", // définit le dossier des fichiers ts
+      "experimentalDecorators": true, // définit le support expérimental des décorateurs
+      "target": "es5", // cible
+      "module" : "commonjs"
+    },
+    "exclude" : ["node_modules"] // exclure le dossier node_modules de la compilation
+  }
+
+  
