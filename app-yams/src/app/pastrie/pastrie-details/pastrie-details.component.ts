@@ -1,7 +1,7 @@
 import { Component, OnInit, Input  } from '@angular/core';
 import { Pastrie,List} from "../pastrie";
+import {PastrieService} from "../pastrie.service";
 
-import {INGREDIENTS_LISTS} from '../mock-pastries';
 
 
 @Component({
@@ -11,11 +11,10 @@ import {INGREDIENTS_LISTS} from '../mock-pastries';
 })
 export class PastrieDetailsComponent implements OnInit {
 
-  ingredientsLists: List[] = INGREDIENTS_LISTS; // récupération de la liste des listes d'ingrédients
-  ingredients:Array<string> = [];
+   ingredients:Array<string> = [];
 
   @Input() pastrie:Pastrie;
-  constructor() { }
+  constructor(private pastrieService: PastrieService ) { }
 
   AddRecipe(event :Event) {
     const inputText = (event.target as HTMLInputElement).value;
@@ -37,7 +36,7 @@ export class PastrieDetailsComponent implements OnInit {
 
   ngOnChanges() :void {
     if(this.pastrie) {
-     this.ingredients = this.ingredientsLists.find(elem => elem.id === this.pastrie?.id)?.list || [];
+     this.ingredients = this.pastrieService.getIngretientByPastrie(this.pastrie);
       /*const rawIngredientList = this.ingredientsLists.find(elem => elem.id === this.pastrie?.id);
       this.ingredients = rawIngredientList?.list || [];*/
     }

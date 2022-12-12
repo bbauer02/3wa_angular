@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Pastrie } from "../pastrie";
-import {PASTRIES} from "../mock-pastries";
+import {PastrieService} from "../pastrie.service";
 
 @Component({
   selector: 'app-pastries',
@@ -10,12 +10,15 @@ import {PASTRIES} from "../mock-pastries";
 export class PastriesComponent implements OnInit {
 
   titlePage: string = "Page principale : liste des pâtisseries";
-  pastries : Pastrie[]  = PASTRIES;
+  pastries : Pastrie[]  = this.pastrieService.getPastrieList();
   selectedPastry : Pastrie;
   filteredPastries : Pastrie[] |null;
 
+  constructor(private pastrieService: PastrieService ) {
+
+  }
+
   @Input() filters: string|null;
-  constructor() { }
 
   ngOnInit(): void {
     this.filteredPastries = this.pastries;
