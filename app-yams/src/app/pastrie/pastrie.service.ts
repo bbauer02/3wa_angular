@@ -13,7 +13,7 @@ export class PastrieService {
     return PASTRIES;
   }
 
-  getPastrieById(pastrieId : string) : Pastrie|undefined {
+  getPastrieById(pastrieId : string|null) : Pastrie|undefined {
         return PASTRIES.find(pastrie => pastrie.id == pastrieId);
   }
 
@@ -33,9 +33,9 @@ export class PastrieService {
   }
 
 
-  getIngretientByPastrie(pastrie : Pastrie) {
+  getIngretientByPastrie(pastrieId : string | null) {
     const ingredients = this.getIngredientList() || [];
-    return ingredients.find(ingredient => ingredient.id === pastrie.id)?.list || []
+    return ingredients.find(ingredient => ingredient.id === pastrieId)?.list || []
   }
   getIngredientList() : List[] {
     return [

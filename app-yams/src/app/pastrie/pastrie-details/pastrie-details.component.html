@@ -1,4 +1,4 @@
-<div class="card" *ngIf="pastrie">
+<div class="card" *ngIf="pastrie; else no_pastrie_found" >
   <img *ngIf="pastrie.url" class="card-img-top" src="{{pastrie.url}}" alt="Pastrie Category">
   <div class="card-body">
     <h5 class="card-title">{{ pastrie.ref }}</h5>
@@ -16,4 +16,9 @@
   />
 
 
+  <button type="button" (click)="goToPastriesList()" class="btn btn-primary">Retour</button>
 </div>
+
+<ng-template #no_pastrie_found>
+  <p>Aucune pâtisserie trouvée !!</p>
+</ng-template>

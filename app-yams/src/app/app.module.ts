@@ -1,19 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Routes, RouterModule} from "@angular/router";
-import {PastriesComponent} from "./pastrie/pastries/pastries.component";
 
 import { AppComponent } from './app.component';
 import {PastrieModule} from "./pastrie/pastrie.module";
+import {AppRoutingModule} from "./app-routing/app-routing.module";
 
-// Définition de la constante pour les Routes
-
-const pastriesRoutes: Routes = [
-  {
-    path: 'pastries',
-    component: PastriesComponent
-  }
-];
 
 
 @NgModule({
@@ -24,7 +15,7 @@ const pastriesRoutes: Routes = [
   imports: [
     BrowserModule,
     PastrieModule,
-    RouterModule.forRoot(pastriesRoutes)
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,10 +2,7 @@
   <h1> {{ titlePage }} </h1>
   <div class="container text-center">
     <div class="row justify-content-md-center">
-      <div class="col-sm-4">
-        <app-pastrie-details [pastrie]="selectedPastry"> </app-pastrie-details>
-      </div>
-      <div class="col-sm-8 pastrie">
+      <div class="col-sm-12 pastrie">
         <ul  style="list-style: none;" *ngIf="pastries"  >
           <li  style="margin-bottom: 20px" *ngFor = " let pastrie of filteredPastries" >
             <div class="card" style="width: 70rem;" appBorderCard="red">
@@ -32,7 +29,7 @@
 
 
               </div>
-              <button (click)="selectPastry(pastrie)">Détail</button>
+              <button (click)="goToPastrie(pastrie)">Détail</button>
             </div>
           </li>
         </ul>

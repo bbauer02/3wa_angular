@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Pastrie } from "../pastrie";
 import {PastrieService} from "../pastrie.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-pastries',
@@ -14,10 +15,12 @@ export class PastriesComponent implements OnInit {
   selectedPastry : Pastrie;
   filteredPastries : Pastrie[] |null;
 
-  constructor(private pastrieService: PastrieService ) {
+  constructor(private pastrieService: PastrieService, private router: Router ) {
 
   }
-
+  goToPastrie(pastrie : Pastrie) {
+    this.router.navigate(['/pastrie', pastrie.id])
+  }
   @Input() filters: string|null;
 
   ngOnInit(): void {
