@@ -1,4 +1,4 @@
-<form [formGroup]="pastrieForm">
+<form [formGroup]="pastrieForm" >
   <div class="row">
       <div class="col">
         <div class="card-panel">
@@ -15,12 +15,13 @@
           <input type="order" class="form-control" id="order" required formControlName="order">
           <label for="url">URL :</label>
           <input type="url" class="form-control" id="url"  formControlName="url">
-          <button type="submit" (click)="onSubmitForm()">Enregistrer</button>
+          <button type="submit" (click)="onSubmitForm()" [disabled]="pastrieForm.invalid">Enregistrer</button>
         </div>
       </div>
   </div>
 </form>
 <br><br>
+
 <div *ngIf="formPreview$ | async as pastrie">
     <h1>{{pastrie.name}}<span style="background: cornflowerblue;color: aliceblue">{{pastrie.ref}}</span></h1>
     <p>{{pastrie.description}}</p>
@@ -28,3 +29,4 @@
     <p>{{pastrie.order}}</p>
     <img src="{{pastrie.url}}" width="400"/>
 </div>
+

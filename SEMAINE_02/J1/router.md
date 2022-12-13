@@ -132,9 +132,9 @@ export class PastrieDescriptionComponent implements OnInit {
 
 La page correspondant au PastrieDescriptionComponent affichera le détail d’une pâtisserie.
 
-![](./img/pastrie_detail.png)
+![](img/pastrie_detail.png)
 
 Pour le formulaire de connexion affichez simplement pour l’insant le formulaire
 suivant :
 
-![](./img/connection_form.png)
+![](img/connection_form.png)
