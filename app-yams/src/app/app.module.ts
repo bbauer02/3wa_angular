@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import {PastrieModule} from "./pastrie/pastrie.module";
-import {AppRoutingModule} from "./app-routing/app-routing.module";
+import {RouterOutlet} from "@angular/router";
+
 
 
 
@@ -15,7 +16,7 @@ import {AppRoutingModule} from "./app-routing/app-routing.module";
   imports: [
     BrowserModule,
     PastrieModule,
-    AppRoutingModule
+    RouterOutlet
   ],
   providers: [],
   bootstrap: [AppComponent]

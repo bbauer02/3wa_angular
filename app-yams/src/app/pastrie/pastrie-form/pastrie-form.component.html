@@ -1,0 +1,30 @@
+<form [formGroup]="pastrieForm">
+  <div class="row">
+      <div class="col">
+        <div class="card-panel">
+            <!-- Nom de la patisserie -->
+            <label for="ref">Référence : </label>
+            <input type="ref" class="form-control" id="ref" required formControlName="ref">
+          <label for="name">Nom :</label>
+          <input type="name" class="form-control" id="name" required formControlName="name">
+          <label for="description">Description :</label>
+          <input type="description" class="form-control" id="description" required formControlName="description">
+          <label for="quantity">Quantité :</label>
+          <input type="quantity" class="form-control" id="quantity" required formControlName="quantity">
+          <label for="order">Commande :</label>
+          <input type="order" class="form-control" id="order" required formControlName="order">
+          <label for="url">URL :</label>
+          <input type="url" class="form-control" id="url"  formControlName="url">
+          <button type="submit" (click)="onSubmitForm()">Enregistrer</button>
+        </div>
+      </div>
+  </div>
+</form>
+<br><br>
+<div *ngIf="formPreview$ | async as pastrie">
+    <h1>{{pastrie.name}}<span style="background: cornflowerblue;color: aliceblue">{{pastrie.ref}}</span></h1>
+    <p>{{pastrie.description}}</p>
+    <p>{{pastrie.quantity}}</p>
+    <p>{{pastrie.order}}</p>
+    <img src="{{pastrie.url}}" width="400"/>
+</div>
